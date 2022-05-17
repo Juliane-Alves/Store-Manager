@@ -18,10 +18,10 @@ app.get('/sales', salesContoller.getAllSales);
 
 app.get('/sales/:id', salesContoller.getIdSales);
 
-// validação requisito 3 
+// validação requisito 3 e 4  
 app.post('/products', productValidation, productsController.createProducts);
 
-app.put('/products/:id', productValidation);
+app.put('/products/:id', productValidation, productsController.editProducts);
 
 app.post('/sales', saleValidation);
 

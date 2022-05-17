@@ -23,8 +23,18 @@ const createProducts = async (name, quantity) => {
   return newProducts;
 };
 
+const editProducts = async (id, name, quantity) => {
+    const consulterId = await productModel.getId(id);
+    if (consulterId.length === 0) {
+      throw new Error('Product not found');
+    }
+    const alterProduct = await productModel.editProducts(id, name, quantity);
+    return alterProduct; 
+};
+
 module.exports = {
     getAllProducts,
     getId, 
     createProducts,
+    editProducts,
 };
