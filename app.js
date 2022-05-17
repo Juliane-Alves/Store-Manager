@@ -19,9 +19,9 @@ app.get('/sales', salesContoller.getAllSales);
 app.get('/sales/:id', salesContoller.getIdSales);
 
 // validação requisito 3 
-app.post('/products', productValidation);
+app.post('/products', productValidation, productsController.createProducts);
 
-app.put('/product/:id', productValidation);
+app.put('/products/:id', productValidation);
 
 app.post('/sales', saleValidation);
 
