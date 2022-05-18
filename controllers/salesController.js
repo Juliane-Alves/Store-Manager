@@ -32,6 +32,11 @@ const editSales = async (req, res, next) => {
       next(error);
     }
   };
+  const newSale = async (req, res, _next) => {
+    const data = req.body;
+    const newSales = await salesService.newSale(data);
+    return res.status(201).json(newSales);
+};
 
   const deleteSalesId = async (req, res, next) => {
     try {
@@ -48,4 +53,5 @@ module.exports = {
     getIdSales,
     editSales,
     deleteSalesId,
+    newSale,
 };

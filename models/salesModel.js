@@ -34,6 +34,18 @@ const editSales = async (id, productId, quantity) => {
    return true;
 };
 
+const salesproducts = async (id, product, quantity) => {
+    const query = 'INSERT INTO sales_products (sale_id, product_Id, quantity) VALUES (?, ?, ?);';
+    const saleProduct = await connection.execute(query, [id, product, quantity]);
+    return saleProduct.insertId;
+};
+
+const newSale = async () => {
+    const query = 'INSERT INTO sales (date) VALUES (NOW());';
+    const [sale] = await connection.execute(query);
+    return sale.insertId;
+};
+
 const deleteSalesId = async (saleId) => {
     const query = `DELETE sa, sapr FROM sales AS sa
     JOIN sales_products AS sapr
@@ -48,4 +60,6 @@ module.exports = {
     getIdSales,
     editSales, 
     deleteSalesId,
+    newSale,
+    salesproducts,
 };

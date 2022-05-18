@@ -24,7 +24,7 @@ app.post('/products', productValidation, productsController.createProducts);
 
 app.put('/products/:id', productValidation, productsController.editProducts);
 
-app.post('/sales', saleValidation);
+app.post('/sales', saleValidation, salesContoller.newSale);
 
 // endpoint req 8
 app.put('/sales/:id', saleValidation, salesContoller.editSales);
