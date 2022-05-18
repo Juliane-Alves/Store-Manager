@@ -4,6 +4,7 @@ const HTT_STATUS_OK = 200;
 const ERROR_STATUS = 404;
 const HTTP_RES_SUCESS = 201;
 const HTTP_CONFLIT = 409;
+const HTTP_SUCESS = 204;
 
 const getAllProducts = async (_req, res) => {
     const products = await productService.getAllProducts();
@@ -44,9 +45,21 @@ const editProducts = async (req, res) => {
     }
   };
 
+const deleteProducts = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await productService.deleteProducts(id);
+    
+    return res.status(HTTP_SUCESS).json(product);
+  } catch (error) {
+    return res.status(ERROR_STATUS).json({ message: error.message });
+  }
+};
+
 module.exports = {
     getAllProducts,
     getId,
     createProducts,
     editProducts, 
+    deleteProducts,
 };

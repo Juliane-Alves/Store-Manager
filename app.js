@@ -26,6 +26,9 @@ app.put('/products/:id', productValidation, productsController.editProducts);
 app.post('/sales', saleValidation);
 
 app.put('sales/:id', saleValidation);
+
+// endpoint requisito 6 
+app.delete('/products/:id', productsController.deleteProducts);
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();
