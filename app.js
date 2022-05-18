@@ -4,6 +4,7 @@ const salesContoller = require('./controllers/salesController');
 const errorMiddlware = require('./middlewares/erroMiddleware');
 const productValidation = require('./middlewares/validadeProduct');
 const saleValidation = require('./middlewares/validadeSales');
+// const deleteSalesId = require('./controllers/salesController');
 
 const app = express();
 
@@ -30,6 +31,9 @@ app.put('/sales/:id', saleValidation, salesContoller.editSales);
 
 // endpoint requisito 6 
 app.delete('/products/:id', productsController.deleteProducts);
+
+// endpoin req 10 
+app.delete('/sales/:id', salesContoller.deleteSalesId);
 // não remova esse endpoint, é para o avaliador funcionar
 app.get('/', (_request, response) => {
   response.send();

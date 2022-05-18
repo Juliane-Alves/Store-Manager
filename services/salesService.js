@@ -26,8 +26,15 @@ const editSales = async (saleId, arraySales) => {
     return { saleId, itemUpdated: arraySales };
   };
 
+  const deleteSalesId = async (saleId) => {
+    const salesId = await salesModel.getIdSales(saleId);
+    if (salesId.length === 0) throw message;
+    const deleteSale = await salesModel.deleteSalesId(saleId);
+   return deleteSale;
+  };
 module.exports = {
     getAllSales,
     getIdSales,
     editSales, 
+    deleteSalesId,
 };

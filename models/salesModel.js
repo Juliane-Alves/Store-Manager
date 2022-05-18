@@ -34,8 +34,18 @@ const editSales = async (id, productId, quantity) => {
    return true;
 };
 
+const deleteSalesId = async (saleId) => {
+    const query = `DELETE sa, sapr FROM sales AS sa
+    JOIN sales_products AS sapr
+    ON sa.id = sapr.sale_id
+    WHERE sa.id = ?`;
+    const [product] = await connection.execute(query, [saleId]);
+    return product;
+  };
+  
 module.exports = {
     getAllSales, 
     getIdSales,
     editSales, 
+    deleteSalesId,
 };

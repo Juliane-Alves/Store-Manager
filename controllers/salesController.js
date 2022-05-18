@@ -32,9 +32,20 @@ const editSales = async (req, res, next) => {
       next(error);
     }
   };
+
+  const deleteSalesId = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await salesService.deleteSalesId(id);
+     return res.status(204).send();
+    } catch (error) {
+    next(error);
+    }
+  };
   
 module.exports = {
     getAllSales,
     getIdSales,
     editSales,
+    deleteSalesId,
 };
