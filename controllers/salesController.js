@@ -22,7 +22,19 @@ const getIdSales = async (req, res, next) => {
     }
 };
 
+const editSales = async (req, res, next) => {
+    try {
+      const arraySales = req.body;
+      const { id } = req.params;
+      const sales = await salesService.editSales(id, arraySales);
+      return res.status(HTT_STATUS_OK).json(sales);
+    } catch (error) {
+      next(error);
+    }
+  };
+  
 module.exports = {
     getAllSales,
     getIdSales,
+    editSales,
 };

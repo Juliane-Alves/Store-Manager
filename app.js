@@ -25,7 +25,8 @@ app.put('/products/:id', productValidation, productsController.editProducts);
 
 app.post('/sales', saleValidation);
 
-app.put('sales/:id', saleValidation);
+// endpoint req 8
+app.put('/sales/:id', saleValidation, salesContoller.editSales);
 
 // endpoint requisito 6 
 app.delete('/products/:id', productsController.deleteProducts);
