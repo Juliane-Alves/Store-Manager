@@ -17,30 +17,4 @@ describe('Verifica se é inserido um novo produto do banco de dados', () => {
         expect(result).to.be.a('array').to.have.lengthOf(1)
       });
     });
-  
-    describe('Verifica se o producto é inserido com sucesso', async () => {
-      const payloand = {
-        id: 4,
-        name: 'flor',
-        quantity: 3,
-      };
-  
-      before(() => {
-        sinon.stub(productModel, 'createProducts').resolves(payloand);
-      });
-  
-      after(() => {
-        productModel.createProducts.restore();
-      });
-  
-      it('Verifica se retorna um objeto', async () => {
-        const response = await productsService.createProducts('flor', 3);
-        expect(response).to.be.a('object');
-      });
-  
-      it(' verifica se o objeto possui o "id" do novo produto', async () => {
-        const response = await productsService.createProducts('flor', 3);
-        expect(response).to.have.a.property("id");
-      });
-    });
   });
